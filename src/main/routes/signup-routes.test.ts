@@ -15,7 +15,6 @@ afterAll(async () => {
     await MongoHelper.disconnect()
 })
 
-
 describe('SignUp Middleware', () => {
     test('Should return an account on sucess', async () => {
         await request(app)
