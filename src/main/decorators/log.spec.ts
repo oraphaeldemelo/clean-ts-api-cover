@@ -25,19 +25,21 @@ const makeController = (): Controller => {
     return new ControllerStub()
 }
 
+const makeFakeRequest = (): HttpRequest => ({
+    body: {
+        name: 'any_name',
+        email: 'any_email@mail.com',
+        password: 'any_password',
+        passwordConfirmation: 'any_password'
+    }
+})
+
 describe('LogController Decorator', () => {
     test('Should call controller handle', async () => {
         const { sut, controllerStub } = makeSut()
         const handleSpy = jest.spyOn(controllerStub, 'handle')
 
-        const httpRequest = {
-            body: {
-                name: 'any_name',
-                email: 'any_email@mail.com',
-                password: 'any_password',
-                passwordConfirmation: 'any_password'
-            }
-        }
+        const httpRequest = makeFakeRequest()
         await sut.handle(httpRequest)
         expect(handleSpy).toHaveBeenCalledWith(httpRequest)
     })
