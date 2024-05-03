@@ -72,7 +72,7 @@ describe('LogController Decorator', () => {
         const httpRequest = { body: { name: 'Raphael' } }
         const httpResponse = await sut.handle(httpRequest)
 
-        expect(httpResponse).toEqual(ok(makeFakeAccount() ))
+        expect(httpResponse).toEqual(ok(makeFakeAccount()))
     })
 
     test('Should call logErrorRepository with correct error if controller returns a server error', async () => {
